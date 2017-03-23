@@ -11,6 +11,7 @@ namespace Task1.Tests
     [TestFixture]
     public class GCDCalculatorTests
     {
+        #region Tests for Euclidean algorithm
         [TestCase(12, 8, ExpectedResult = 4)]
         [TestCase(0, 12, ExpectedResult = 12)]
         [TestCase(6, 6, ExpectedResult = 6)]
@@ -18,16 +19,7 @@ namespace Task1.Tests
         public int UseEuclideanAlgorithm_PassedTwoNumbers_ExpectedPositiveTest(int firstNumber, int secondNumber)
         {
             return GCDCalculator.UseEuclideanAlgorithm(firstNumber, secondNumber);
-        }
-
-        [TestCase(-12, 8, ExpectedResult = 4)]
-        [TestCase(0, 12, ExpectedResult = 12)]
-        [TestCase(6, -6, ExpectedResult = 6)]
-        [TestCase(15, 18, ExpectedResult = 3)]
-        public int UseSteinAlgorithm_PassedTwoNumbers_ExpectedPositiveTest(int firstNumber, int secondNumber)
-        {
-            return GCDCalculator.UseSteinAlgorithm(firstNumber, secondNumber);
-        }
+        }          
 
         [TestCase(12, 8, ExpectedResult = 4)]
         [TestCase(0, 12, ExpectedResult = 12)]
@@ -42,5 +34,31 @@ namespace Task1.Tests
 
             return actual;
         }
+        #endregion
+
+        #region Tests for Stein algorithm
+        [TestCase(-12, 8, ExpectedResult = 4)]
+        [TestCase(0, 12, ExpectedResult = 12)]
+        [TestCase(6, -6, ExpectedResult = 6)]
+        [TestCase(15, 18, ExpectedResult = 3)]
+        public int UseSteinAlgorithm_PassedTwoNumbers_ExpectedPositiveTest(int firstNumber, int secondNumber)
+        {
+            return GCDCalculator.UseSteinAlgorithm(firstNumber, secondNumber);
+        }
+
+        [TestCase(12, 8, ExpectedResult = 4)]
+        [TestCase(0, 12, ExpectedResult = 12)]
+        [TestCase(6, 6, ExpectedResult = 6)]
+        [TestCase(15, 18, ExpectedResult = 3)]
+        public int UseSteinAlgorithm_PassedTwoNumbersAndTime_ExpectedPositiveTest(int firstNumber, int secondNumber)
+        {
+            long time;
+
+            int actual = GCDCalculator.UseSteinAlgorithm(out time, firstNumber, secondNumber);
+            Debug.WriteLine($"Evaluating time is {time}ms");
+
+            return actual;
+        }
+        #endregion
     }
 }

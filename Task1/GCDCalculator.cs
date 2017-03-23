@@ -104,6 +104,81 @@ namespace Task1
             int result = GetSteinGCD(firstNumber, secondNumber);
             return result;
         }
+
+        public static int UseSteinAlgorithm(out long timeInMilliseconds, int firstNumber, int secondNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0)
+                throw new ArgumentException();
+
+            Stopwatch timer = new Stopwatch();
+            int result = GetSteinGCD(firstNumber, secondNumber);
+            timer.Stop();
+            timeInMilliseconds = timer.ElapsedMilliseconds;
+            return result;
+        }
+
+        public static int UseSteinAlgorithm(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
+                throw new ArgumentException();
+
+            int result = GetSteinGCD(GetSteinGCD(firstNumber, secondNumber), thirdNumber);
+            return result;
+        }
+
+        public static int UseSteinAlgorithm(out long timeInMilliseconds, int firstNumber, int secondNumber, int thirdNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
+                throw new ArgumentException();
+
+            Stopwatch timer = new Stopwatch();
+            int result = GetSteinGCD(GetSteinGCD(firstNumber, secondNumber), thirdNumber);
+            timer.Stop();
+            timeInMilliseconds = timer.ElapsedMilliseconds;
+            return result;
+        }
+
+        public static int UseSteinAlgorithm(params int[] setOfNumbers)
+        {
+            if (setOfNumbers == null)
+                throw new ArgumentNullException();
+
+            if (setOfNumbers.Length < 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (setOfNumbers.All(x => x == 0))
+                throw new ArgumentException();
+
+            int result = setOfNumbers[0];
+            for (int i = 1; i < setOfNumbers.Length; i++)
+            {
+                result = GetSteinGCD(setOfNumbers[i], result);
+            }
+            return result;
+        }
+
+        public static int UseSteinAlgorithm(out long timeInMilliseconds, params int[] setOfNumbers)
+        {
+            if (setOfNumbers == null)
+                throw new ArgumentNullException();
+
+            if (setOfNumbers.Length < 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (setOfNumbers.All(x => x == 0))
+                throw new ArgumentException();
+
+            Stopwatch timer = new Stopwatch();
+            int result = setOfNumbers[0];
+            for (int i = 1; i < setOfNumbers.Length; i++)
+            {
+                result = GetSteinGCD(setOfNumbers[i], result);
+            }
+
+            timer.Stop();
+            timeInMilliseconds = timer.ElapsedMilliseconds;
+            return result;
+        }
         #endregion
 
         #region Private Methods
