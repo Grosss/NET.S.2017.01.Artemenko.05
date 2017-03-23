@@ -109,7 +109,44 @@ namespace Task1.Tests
             Assert.Throws<ArgumentException>(() => GCDCalculator.UseEuclideanAlgorithm(out time, firstNumber, secondNumber, thirdNumber));
         }
 
+        [TestCase(null)]
+        public void UseEuclideanAlgorithm_PassedNullReference_ThrowsArgumentNullException(int[] setOfNumbers)
+        {
+            Assert.Throws<ArgumentNullException>(() => GCDCalculator.UseEuclideanAlgorithm(setOfNumbers));
+        }
 
+        [TestCase(null)]
+        public void UseEuclideanAlgorithm_PassedNullReferenceAndTime_ThrowsArgumentNullException(int[] setOfNumbers)
+        {
+            long time;
+            Assert.Throws<ArgumentNullException>(() => GCDCalculator.UseEuclideanAlgorithm(out time, setOfNumbers));
+        }
+
+        [TestCase(1)]
+        public void UseEuclideanAlgorithm_PassedArrayWithInvalidLength_ThrowsArgumentOutOfRangeException(params int[] setOfNumbers)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => GCDCalculator.UseEuclideanAlgorithm(setOfNumbers));
+        }
+
+        [TestCase(new int[] { })]
+        public void UseEuclideanAlgorithm_PassedArrayWithInvalidLengthAndTime_ThrowsArgumentOutOfRangeException(params int[] setOfNumbers)
+        {
+            long time;
+            Assert.Throws<ArgumentOutOfRangeException>(() => GCDCalculator.UseEuclideanAlgorithm(out time, setOfNumbers));
+        }
+
+        [TestCase(0, 0, 0, 0)]
+        public void UseEuclideanAlgorithm_PassedOnlyZeros_ThrowsArgumentException(params int[] setOfNumbers)
+        {
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseEuclideanAlgorithm(setOfNumbers));
+        }
+
+        [TestCase(0, 0, 0, 0)]
+        public void UseEuclideanAlgorithm_PassedOnlyZerosAndTime_ThrowsArgumentException(params int[] setOfNumbers)
+        {
+            long time;
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseEuclideanAlgorithm(out time, setOfNumbers));
+        }
         #endregion
 
         #region Tests for Stein algorithm
@@ -182,6 +219,71 @@ namespace Task1.Tests
             Debug.WriteLine($"Evaluating time is {time}ms");
 
             return actual;
+        }
+
+        [TestCase(0, 0)]
+        public void UseSteinAlgorithm_PassedTwoZeros_ThrowsArgumentException(int firstNumber, int secondNumber)
+        {
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseSteinAlgorithm(firstNumber, secondNumber));
+        }
+
+        [TestCase(0, 0)]
+        public void UseSteinAlgorithm_PassedTwoZerosAndTime_ThrowsArgumentException(int firstNumber, int secondNumber)
+        {
+            long time;
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseSteinAlgorithm(out time, firstNumber, secondNumber));
+        }
+
+        [TestCase(0, 0, 0)]
+        public void UseSteinAlgorithm_PassedThreeZeros_ThrowsArgumentException(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseSteinAlgorithm(firstNumber, secondNumber, thirdNumber));
+        }
+
+        [TestCase(0, 0, 0)]
+        public void UseSteinAlgorithm_PassedThreeZerosAndTime_ThrowsArgumentException(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            long time;
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseSteinAlgorithm(out time, firstNumber, secondNumber, thirdNumber));
+        }
+
+        [TestCase(null)]
+        public void UseSteinAlgorithm_PassedNullReference_ThrowsArgumentNullException(int[] setOfNumbers)
+        {
+            Assert.Throws<ArgumentNullException>(() => GCDCalculator.UseSteinAlgorithm(setOfNumbers));
+        }
+
+        [TestCase(null)]
+        public void UseSteinAlgorithm_PassedNullReferenceAndTime_ThrowsArgumentNullException(int[] setOfNumbers)
+        {
+            long time;
+            Assert.Throws<ArgumentNullException>(() => GCDCalculator.UseSteinAlgorithm(out time, setOfNumbers));
+        }
+
+        [TestCase(1)]
+        public void UseSteinAlgorithm_PassedArrayWithInvalidLength_ThrowsArgumentOutOfRangeException(params int[] setOfNumbers)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => GCDCalculator.UseSteinAlgorithm(setOfNumbers));
+        }
+
+        [TestCase(new int[] { })]
+        public void UseSteinAlgorithm_PassedArrayWithInvalidLengthAndTime_ThrowsArgumentOutOfRangeException(params int[] setOfNumbers)
+        {
+            long time;
+            Assert.Throws<ArgumentOutOfRangeException>(() => GCDCalculator.UseSteinAlgorithm(out time, setOfNumbers));
+        }
+
+        [TestCase(0, 0, 0, 0)]
+        public void UseSteinAlgorithm_PassedOnlyZeros_ThrowsArgumentException(params int[] setOfNumbers)
+        {
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseSteinAlgorithm(setOfNumbers));
+        }
+
+        [TestCase(0, 0, 0, 0)]
+        public void UseSteinAlgorithm_PassedOnlyZerosAndTime_ThrowsArgumentException(params int[] setOfNumbers)
+        {
+            long time;
+            Assert.Throws<ArgumentException>(() => GCDCalculator.UseSteinAlgorithm(out time, setOfNumbers));
         }
         #endregion
     }
