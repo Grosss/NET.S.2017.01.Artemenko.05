@@ -7,6 +7,9 @@ using System.Diagnostics;
 
 namespace Task1
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class GCDCalculator
     {
         #region UseEuclideanAlgorithm overloads
