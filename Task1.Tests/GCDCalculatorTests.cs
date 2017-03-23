@@ -34,6 +34,25 @@ namespace Task1.Tests
 
             return actual;
         }
+
+        [TestCase(12, 8, 18, ExpectedResult = 2)]
+        [TestCase(0, 15, 4, ExpectedResult = 1)]
+        [TestCase(6, -27, 36, ExpectedResult = 3)]
+        [TestCase(27, 18, 72, ExpectedResult = 9)]
+        public int UseEuclideanAlgorithm_PassedThreeNumbers_ExpectedPositiveTest(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            return GCDCalculator.UseEuclideanAlgorithm(firstNumber, secondNumber, thirdNumber);
+        }
+
+        [TestCase(12, 8, 18, 32, ExpectedResult = 2)]
+        [TestCase(0, 15, 4, 100, ExpectedResult = 1)]
+        [TestCase(6, -27, 36, 18, ExpectedResult = 3)]
+        [TestCase(27, 18, 72, 99, ExpectedResult = 9)]
+        [TestCase(new int[] { 36, -96, 60, 126}, ExpectedResult = 6)]
+        public int UseEuclideanAlgorithm_PassedSetOfNumbers_ExpectedPositiveTest(params int[] setOfNumbers)
+        {
+            return GCDCalculator.UseEuclideanAlgorithm(setOfNumbers);
+        }
         #endregion
 
         #region Tests for Stein algorithm
@@ -58,6 +77,25 @@ namespace Task1.Tests
             Debug.WriteLine($"Evaluating time is {time}ms");
 
             return actual;
+        }
+
+        [TestCase(12, 8, 18, ExpectedResult = 2)]
+        [TestCase(0, 15, 4, ExpectedResult = 1)]
+        [TestCase(6, -27, 36, ExpectedResult = 3)]
+        [TestCase(27, 18, 72, ExpectedResult = 9)]
+        public int UseSteinAlgorithm_PassedThreeNumbers_ExpectedPositiveTest(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            return GCDCalculator.UseSteinAlgorithm(firstNumber, secondNumber, thirdNumber);
+        }
+
+        [TestCase(12, 8, 18, 32, ExpectedResult = 2)]
+        [TestCase(0, 15, 4, 100, ExpectedResult = 1)]
+        [TestCase(6, -27, 36, 18, ExpectedResult = 3)]
+        [TestCase(27, 18, 72, 99, ExpectedResult = 9)]
+        [TestCase(new int[] { 36, -96, 60, 126 }, ExpectedResult = 6)]
+        public int UseSteinAlgorithm_PassedSetOfNumbers_ExpectedPositiveTest(params int[] setOfNumbers)
+        {
+            return GCDCalculator.UseSteinAlgorithm(setOfNumbers);
         }
         #endregion
     }
