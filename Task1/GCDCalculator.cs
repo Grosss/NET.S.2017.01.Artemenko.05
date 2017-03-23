@@ -9,6 +9,7 @@ namespace Task1
 {
     public static class GCDCalculator
     {
+        #region UseEuclideanAlgorithm overloads
         public static int UseEuclideanAlgorithm(int firstNumber, int secondNumber)
         {
             if (firstNumber == 0 && secondNumber == 0)
@@ -92,6 +93,18 @@ namespace Task1
             timeInMilliseconds = timer.ElapsedMilliseconds;
             return result;
         }
+        #endregion
+
+        #region UseSteinAlgorithm overloads
+        public static int UseSteinAlgorithm(int firstNumber, int secondNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0)
+                throw new ArgumentException();
+
+            int result = GetSteinGCD(firstNumber, secondNumber);
+            return result;
+        }
+        #endregion
 
         #region Private Methods
         private static int GetEuclideanGCD(int a, int b)
@@ -104,6 +117,36 @@ namespace Task1
                 a = temp;
             }
             return Math.Abs(a);
+        }
+
+        private static int GetSteinGCD(int a, int b)
+        {
+            if (a == 0)
+                return Math.Abs(b);
+
+            if (b == 0)
+                return Math.Abs(a);
+
+            if (a == b)
+                return Math.Abs(a);
+
+            if (Math.Abs(a) == 1 || Math.Abs(b) == 1)
+                return 1;
+
+            if (a % 2 == 0)
+            {
+                if (b % 2 == 0)
+                    return 2 * GetSteinGCD(a / 2, b / 2);
+                else
+                    return GetSteinGCD(a / 2, b);
+            }
+            else
+            {
+                if (b % 2 == 0)
+                    return GetSteinGCD(a, b / 2);
+                else
+                    return GetSteinGCD(b, Math.Abs(a - b) / 2);
+            }             
         }
         #endregion
     }

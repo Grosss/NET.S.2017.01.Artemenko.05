@@ -20,6 +20,15 @@ namespace Task1.Tests
             return GCDCalculator.UseEuclideanAlgorithm(firstNumber, secondNumber);
         }
 
+        [TestCase(-12, 8, ExpectedResult = 4)]
+        [TestCase(0, 12, ExpectedResult = 12)]
+        [TestCase(6, -6, ExpectedResult = 6)]
+        [TestCase(15, 18, ExpectedResult = 3)]
+        public int UseSteinAlgorithm_PassedTwoNumbers_ExpectedPositiveTest(int firstNumber, int secondNumber)
+        {
+            return GCDCalculator.UseSteinAlgorithm(firstNumber, secondNumber);
+        }
+
         [TestCase(12, 8, ExpectedResult = 4)]
         [TestCase(0, 12, ExpectedResult = 12)]
         [TestCase(6, 6, ExpectedResult = 6)]
