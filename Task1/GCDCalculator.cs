@@ -13,178 +13,137 @@ namespace Task1
     public static class GCDCalculator
     {
         #region UseEuclideanAlgorithm overloads
-        public static int UseEuclideanAlgorithm(int firstNumber, int secondNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0)
-                throw new ArgumentException();
 
-            int result = GetEuclideanGCD(firstNumber, secondNumber);
-            return result;
-        }
+        public static int UseEuclideanAlgorithm(int firstNumber, int secondNumber)
+            => GetGCD(GetEuclideanGCD, firstNumber, secondNumber);        
 
         public static int UseEuclideanAlgorithm(out long timeInMilliseconds, int firstNumber, int secondNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0)
-                throw new ArgumentException();
-
-            Stopwatch timer = new Stopwatch();
-            int result = GetEuclideanGCD(firstNumber, secondNumber);
-            timer.Stop();
-            timeInMilliseconds = timer.ElapsedMilliseconds;
-            return result;
-        }
+            => GetGCD(out timeInMilliseconds, GetEuclideanGCD, firstNumber, secondNumber);
 
         public static int UseEuclideanAlgorithm(int firstNumber, int secondNumber, int thirdNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
-                throw new ArgumentException();
-
-            int result = GetEuclideanGCD(GetEuclideanGCD(firstNumber, secondNumber), thirdNumber);
-            return result;
-        }
+            => GetGCD(GetEuclideanGCD, firstNumber, secondNumber, thirdNumber);
 
         public static int UseEuclideanAlgorithm(out long timeInMilliseconds, int firstNumber, int secondNumber, int thirdNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
-                throw new ArgumentException();
-
-            Stopwatch timer = new Stopwatch();
-            int result = GetEuclideanGCD(GetEuclideanGCD(firstNumber, secondNumber), thirdNumber);
-            timer.Stop();
-            timeInMilliseconds = timer.ElapsedMilliseconds;
-            return result;
-        }
+            => GetGCD(out timeInMilliseconds, GetEuclideanGCD, firstNumber, secondNumber, thirdNumber);
 
         public static int UseEuclideanAlgorithm(params int[] setOfNumbers)
-        {
-            if (setOfNumbers == null)
-                throw new ArgumentNullException();
-
-            if (setOfNumbers.Length < 2)
-                throw new ArgumentOutOfRangeException();
-
-            if (setOfNumbers.All(x => x == 0))
-                throw new ArgumentException();
-
-            int result = setOfNumbers[0];
-            for (int i = 1; i < setOfNumbers.Length; i++)
-            {
-                result = GetEuclideanGCD(setOfNumbers[i], result);
-            }
-            return result;
-        }
+            => GetGCD(GetEuclideanGCD, setOfNumbers);
 
         public static int UseEuclideanAlgorithm(out long timeInMilliseconds, params int[] setOfNumbers)
-        {
-            if (setOfNumbers == null)
-                throw new ArgumentNullException();
+            => GetGCD(out timeInMilliseconds, GetEuclideanGCD, setOfNumbers);
 
-            if (setOfNumbers.Length < 2)
-                throw new ArgumentOutOfRangeException();
-
-            if (setOfNumbers.All(x => x == 0))
-                throw new ArgumentException();
-
-            Stopwatch timer = new Stopwatch();
-            int result = setOfNumbers[0];
-            for (int i = 1; i < setOfNumbers.Length; i++)
-            {
-                result = GetEuclideanGCD(setOfNumbers[i], result);
-            }
-            
-            timer.Stop();
-            timeInMilliseconds = timer.ElapsedMilliseconds;
-            return result;
-        }
         #endregion
 
         #region UseSteinAlgorithm overloads
+        
         public static int UseSteinAlgorithm(int firstNumber, int secondNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0)
-                throw new ArgumentException();
-
-            int result = GetSteinGCD(firstNumber, secondNumber);
-            return result;
-        }
+            => GetGCD(GetSteinGCD, firstNumber, secondNumber);
 
         public static int UseSteinAlgorithm(out long timeInMilliseconds, int firstNumber, int secondNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0)
-                throw new ArgumentException();
-
-            Stopwatch timer = new Stopwatch();
-            int result = GetSteinGCD(firstNumber, secondNumber);
-            timer.Stop();
-            timeInMilliseconds = timer.ElapsedMilliseconds;
-            return result;
-        }
+            => GetGCD(out timeInMilliseconds, GetSteinGCD, firstNumber, secondNumber);
 
         public static int UseSteinAlgorithm(int firstNumber, int secondNumber, int thirdNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
-                throw new ArgumentException();
-
-            int result = GetSteinGCD(GetSteinGCD(firstNumber, secondNumber), thirdNumber);
-            return result;
-        }
+            => GetGCD(GetSteinGCD, firstNumber, secondNumber, thirdNumber);
 
         public static int UseSteinAlgorithm(out long timeInMilliseconds, int firstNumber, int secondNumber, int thirdNumber)
-        {
-            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
-                throw new ArgumentException();
-
-            Stopwatch timer = new Stopwatch();
-            int result = GetSteinGCD(GetSteinGCD(firstNumber, secondNumber), thirdNumber);
-            timer.Stop();
-            timeInMilliseconds = timer.ElapsedMilliseconds;
-            return result;
-        }
+            => GetGCD(out timeInMilliseconds, GetSteinGCD, firstNumber, secondNumber, thirdNumber);
 
         public static int UseSteinAlgorithm(params int[] setOfNumbers)
-        {
-            if (setOfNumbers == null)
-                throw new ArgumentNullException();
-
-            if (setOfNumbers.Length < 2)
-                throw new ArgumentOutOfRangeException();
-
-            if (setOfNumbers.All(x => x == 0))
-                throw new ArgumentException();
-
-            int result = setOfNumbers[0];
-            for (int i = 1; i < setOfNumbers.Length; i++)
-            {
-                result = GetSteinGCD(setOfNumbers[i], result);
-            }
-            return result;
-        }
+            => GetGCD(GetSteinGCD, setOfNumbers);
 
         public static int UseSteinAlgorithm(out long timeInMilliseconds, params int[] setOfNumbers)
-        {
-            if (setOfNumbers == null)
-                throw new ArgumentNullException();
+            => GetGCD(out timeInMilliseconds, GetSteinGCD, setOfNumbers);
 
-            if (setOfNumbers.Length < 2)
-                throw new ArgumentOutOfRangeException();
-
-            if (setOfNumbers.All(x => x == 0))
-                throw new ArgumentException();
-
-            Stopwatch timer = new Stopwatch();
-            int result = setOfNumbers[0];
-            for (int i = 1; i < setOfNumbers.Length; i++)
-            {
-                result = GetSteinGCD(setOfNumbers[i], result);
-            }
-
-            timer.Stop();
-            timeInMilliseconds = timer.ElapsedMilliseconds;
-            return result;
-        }
         #endregion
 
         #region Private Methods
+
+        private static int GetGCD(Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0)
+                throw new ArgumentException();
+
+            int result = funcOfGCD(firstNumber, secondNumber);
+            return result;
+        }
+
+        public static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0)
+                throw new ArgumentException();
+
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            int result = funcOfGCD(firstNumber, secondNumber);
+            timer.Stop();
+            timeInMilliseconds = timer.ElapsedMilliseconds;
+            return result;
+        }
+
+        public static int GetGCD(Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber, int thirdNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
+                throw new ArgumentException();
+
+            int result = funcOfGCD(funcOfGCD(firstNumber, secondNumber), thirdNumber);
+            return result;
+        }
+
+        public static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber, int thirdNumber)
+        {
+            if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
+                throw new ArgumentException();
+
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            int result = funcOfGCD(funcOfGCD(firstNumber, secondNumber), thirdNumber);
+            timer.Stop();
+            timeInMilliseconds = timer.ElapsedMilliseconds;
+            return result;
+        }
+
+        public static int GetGCD(Func<int, int, int> funcOfGCD, params int[] setOfNumbers)
+        {
+            if (setOfNumbers == null)
+                throw new ArgumentNullException();
+
+            if (setOfNumbers.Length < 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (setOfNumbers.All(x => x == 0))
+                throw new ArgumentException();
+
+            int result = setOfNumbers[0];
+            for (int i = 1; i < setOfNumbers.Length; i++)
+            {
+                result = funcOfGCD(setOfNumbers[i], result);
+            }
+            return result;
+        }
+
+        public static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, params int[] setOfNumbers)
+        {
+            if (setOfNumbers == null)
+                throw new ArgumentNullException();
+
+            if (setOfNumbers.Length < 2)
+                throw new ArgumentOutOfRangeException();
+
+            if (setOfNumbers.All(x => x == 0))
+                throw new ArgumentException();
+
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            int result = setOfNumbers[0];
+            for (int i = 1; i < setOfNumbers.Length; i++)
+            {
+                result = funcOfGCD(setOfNumbers[i], result);
+            }
+            timer.Stop();
+            timeInMilliseconds = timer.ElapsedMilliseconds;
+            return result;
+        }
+
         private static int GetEuclideanGCD(int a, int b)
         {
             int temp;
@@ -226,6 +185,7 @@ namespace Task1
                     return GetSteinGCD(b, Math.Abs(a - b) / 2);
             }             
         }
+
         #endregion
     }
 }
