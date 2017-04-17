@@ -67,7 +67,7 @@ namespace Task1
             return result;
         }
 
-        public static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber)
+        private static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber)
         {
             if (firstNumber == 0 && secondNumber == 0)
                 throw new ArgumentException();
@@ -80,7 +80,7 @@ namespace Task1
             return result;
         }
 
-        public static int GetGCD(Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber, int thirdNumber)
+        private static int GetGCD(Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber, int thirdNumber)
         {
             if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
                 throw new ArgumentException();
@@ -89,7 +89,7 @@ namespace Task1
             return result;
         }
 
-        public static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber, int thirdNumber)
+        private static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, int firstNumber, int secondNumber, int thirdNumber)
         {
             if (firstNumber == 0 && secondNumber == 0 && thirdNumber == 0)
                 throw new ArgumentException();
@@ -102,7 +102,7 @@ namespace Task1
             return result;
         }
 
-        public static int GetGCD(Func<int, int, int> funcOfGCD, params int[] setOfNumbers)
+        private static int GetGCD(Func<int, int, int> funcOfGCD, params int[] setOfNumbers)
         {
             if (setOfNumbers == null)
                 throw new ArgumentNullException();
@@ -121,7 +121,7 @@ namespace Task1
             return result;
         }
 
-        public static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, params int[] setOfNumbers)
+        private static int GetGCD(out long timeInMilliseconds, Func<int, int, int> funcOfGCD, params int[] setOfNumbers)
         {
             if (setOfNumbers == null)
                 throw new ArgumentNullException();
